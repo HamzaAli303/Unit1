@@ -21,6 +21,7 @@ public class Main {
             System.out.println("ERROR! flight plan already set. Landing on the Plain");
         }
         landingCheck(10);
+
     }
 
     public static boolean landingCheck( int minutesLeft) throws InterruptedException {
@@ -40,4 +41,5 @@ public class Main {
         System.out.println("landed");
         return false;
     }
+
 }
