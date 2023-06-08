@@ -1,13 +1,11 @@
-import javax.sound.midi.Soundbank;
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
-public class Main {
-    public static void main(String[] args) {
+public class GuessingGame {
+    public GuessingGame(){
         String greeting = "Howdy, what's your name? ";
-//        System.out.println(greeting);
+
+        //        System.out.println(greeting);
 //        String playerName = "What is your player name? ";
 //        Make an input field for the user!
         Scanner myObj = new Scanner(System.in);
@@ -24,12 +22,12 @@ public class Main {
         number = Integer.parseInt(input.nextLine());
 //        System.out.print(number);
 
-//      Random number generator
+        //      Random number generator
 //        create an instance of the random object
-            Random rand = new Random();
-//        call method nextInt and pass in upper range bound
-            int number1 = rand.nextInt(100);
-            int tries = 0;
+        Random rand = new Random();
+        //        call method nextInt and pass in upper range bound
+        int number1 = rand.nextInt(100);
+        int tries = 0;
 //        System.out.println(number1);
 
 
@@ -52,12 +50,14 @@ public class Main {
                 System.out.println("You found my number in " + tries + " tries!");
                 break;
             }
-          System.out.print(guessNumber);
+            System.out.print(guessNumber);
             number = input.nextInt();
 
         }
-
-
-
     }
+
+
+
+
 }
+
