@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,25 +9,24 @@ public class GuessingGame {
         //        System.out.println(greeting);
 //        String playerName = "What is your player name? ";
 //        Make an input field for the user!
-        Scanner myObj = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         String userName;
         System.out.print(greeting);
-        userName = myObj.nextLine();
+        userName = input.nextLine();
         System.out.println(userName + ", I'm thinking of a number between 1 and 100");
 //        Guess Number
         System.out.println("Try to guess my number");
         String guessNumber = "Your guess? ";
-        Scanner input = new Scanner(System.in);
-        int number;
+        int guess = 0;
         System.out.print(guessNumber);
-        number = Integer.parseInt(input.nextLine());
+
 //        System.out.print(number);
 
         //      Random number generator
 //        create an instance of the random object
         Random rand = new Random();
         //        call method nextInt and pass in upper range bound
-        int number1 = rand.nextInt(100);
+        int number = rand.nextInt(100);
         int tries = 0;
 //        System.out.println(number1);
 
@@ -35,15 +35,25 @@ public class GuessingGame {
 //        loop
         while(true) {
 //            System.out.println("hello");
-            int guess1;
-            guess1 = number;
-            tries = tries + 1;
 
-            if(guess1 > 100 || guess1 < 1){
+            try {
+                guess = input.nextInt();
+            } catch (InputMismatchException e) {
+//                System.out.print("Try again: ");
+                String WrongInput = input.next();
+                System.out.println("That's not an integer, try again");
+                continue;
+            }
+
+
+            if(guess > 100 || guess < 1){
                 System.out.println("your guess is out of the range, try again.");
-            } else if(guess1 < number1){
+                continue;
+            }
+            tries = tries + 1;
+            if(guess < number){
                 System.out.println("Your guess is too low, try again!");
-            } else if(guess1 > number1){
+            } else if(guess > number){
                 System.out.println("Your guess is too high, try again!");
             } else {
                 System.out.println("Well done " + userName);
@@ -51,7 +61,6 @@ public class GuessingGame {
                 break;
             }
             System.out.print(guessNumber);
-            number = input.nextInt();
 
         }
     }
